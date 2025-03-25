@@ -18,13 +18,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-white">
-      <header className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-green-100">
-        <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-          <div className="flex items-center justify-between">
+    <div className="min-h-screen">
+      <header className="fixed w-full z-50">
+        <nav className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between py-3 sm:py-4 bg-white/85 backdrop-blur-md px-4 rounded-full my-2">
             <Link to="/" className="flex items-center space-x-2">
-              <Hotel className="w-6 h-6 sm:w-8 sm:h-8 text-green-800" />
-              <span className="text-xl sm:text-2xl font-serif text-green-900">Parkway</span>
+              <Hotel className="w-6 h-6 sm:w-8 sm:h-8 text-green-900" />
+              <span className="text-xl sm:text-2xl font-semibold font-serif text-green-900">ParkWay</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -35,8 +35,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   to={item.path}
                   className={`text-base lg:text-lg font-medium ${
                     location.pathname === item.path
-                      ? 'text-green-800'
-                      : 'text-gray-600 hover:text-green-700'
+                      ? 'text-green-900'
+                      : 'text-gray-600 hover:text-green-800'
                   }`}
                 >
                   {item.label}
@@ -54,9 +54,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X className="w-6 h-6 text-green-800" />
+                <X className="w-6 h-6 text-green-900" />
               ) : (
-                <Menu className="w-6 h-6 text-green-800" />
+                <Menu className="w-6 h-6 text-green-900" />
               )}
             </button>
           </div>
@@ -67,33 +67,35 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden pt-4 pb-6"
+              className="md:hidden mt-2 bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden"
             >
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col py-4">
                 {navItems.map((item) => (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`text-base font-medium ${
+                    className={`text-base font-medium px-6 py-2 ${
                       location.pathname === item.path
-                        ? 'text-green-800'
-                        : 'text-gray-600'
+                        ? 'text-green-800 bg-green-50'
+                        : 'text-gray-600 hover:bg-gray-50'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <button className="px-6 py-2 bg-green-800 text-white rounded-full hover:bg-green-700 transition-colors">
-                  Book Now
-                </button>
+                <div className="px-4 mt-2">
+                  <button className="w-full px-6 py-2 bg-green-800 text-white rounded-full hover:bg-green-700 transition-colors">
+                    Book Now
+                  </button>
+                </div>
               </div>
             </motion.div>
           )}
         </nav>
       </header>
 
-      <main className="pt-16 sm:pt-20">{children}</main>
+      <main>{children}</main>
 
       <footer className="bg-green-900 text-white py-8 sm:py-12">
         <div className="container mx-auto px-4 sm:px-6">
