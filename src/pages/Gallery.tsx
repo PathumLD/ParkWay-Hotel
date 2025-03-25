@@ -10,8 +10,8 @@ const Gallery = () => {
     : images.filter(image => image.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-white py-10 sm:py-16 md:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white py-12 sm:py-16 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6">
         <h1 className="text-3xl sm:text-4xl font-serif text-green-900 text-center mb-8 sm:mb-12">
           Our Gallery
         </h1>
@@ -22,7 +22,7 @@ const Gallery = () => {
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-3 py-1 sm:px-6 sm:py-2 rounded-full text-sm sm:text-base transition-colors ${
+              className={`px-4 sm:px-6 py-2 text-sm sm:text-base rounded-full transition-colors ${
                 selectedCategory === category.id
                   ? 'bg-green-800 text-white'
                   : 'bg-green-50 text-green-800 hover:bg-green-100'
@@ -44,15 +44,16 @@ const Gallery = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="relative group overflow-hidden rounded-lg shadow-lg aspect-square sm:aspect-video lg:aspect-[4/3]"
+              className="relative group overflow-hidden rounded-lg shadow-lg aspect-[4/3]"
             >
               <img
                 src={image.src}
                 alt={image.alt}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
-                <p className="text-white p-2 sm:p-4 text-sm sm:text-base font-medium">{image.alt}</p>
+              <div className="absolute inset-0 bg-black/40 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                <p className="text-white p-3 sm:p-4 text-sm sm:text-base font-medium">{image.alt}</p>
               </div>
             </motion.div>
           ))}
@@ -62,4 +63,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default Gallery

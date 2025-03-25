@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Hotel, Instagram, Facebook, Twitter } from 'lucide-react';
@@ -13,23 +13,27 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     { path: '/packages', label: 'Packages' },
   ];
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen bg-white">
       <header className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-green-100">
-        <nav className="container mx-auto px-4 py-4">
+        <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
-              <Hotel className="w-8 h-8 text-green-800" />
-              <span className="text-2xl font-serif text-green-900">Parkway</span>
+              <Hotel className="w-6 h-6 sm:w-8 sm:h-8 text-green-800" />
+              <span className="text-xl sm:text-2xl font-serif text-green-900">Parkway</span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`text-lg font-medium ${
+                  className={`text-base lg:text-lg font-medium ${
                     location.pathname === item.path
                       ? 'text-green-800'
                       : 'text-gray-600 hover:text-green-700'
@@ -38,15 +42,16 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   {item.label}
                 </Link>
               ))}
-              <button className="px-6 py-2 bg-green-800 text-white rounded-full hover:bg-green-700 transition-colors">
+              <button className="px-4 lg:px-6 py-2 bg-green-800 text-white text-sm lg:text-base rounded-full hover:bg-green-700 transition-colors">
                 Book Now
               </button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden"
+              className="md:hidden p-1"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6 text-green-800" />
@@ -69,7 +74,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`text-lg font-medium ${
+                    className={`text-base font-medium ${
                       location.pathname === item.path
                         ? 'text-green-800'
                         : 'text-gray-600'
@@ -88,20 +93,20 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </nav>
       </header>
 
-      <main className="pt-20">{children}</main>
+      <main className="pt-16 sm:pt-20">{children}</main>
 
-      <footer className="bg-green-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <footer className="bg-green-900 text-white py-8 sm:py-12">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-serif mb-4">Parkway Hotel</h3>
-              <p className="text-green-100">
+              <h3 className="text-lg sm:text-xl font-serif mb-4">Parkway Hotel</h3>
+              <p className="text-sm sm:text-base text-green-100">
                 Luxury and comfort in the heart of the city
               </p>
             </div>
             <div>
-              <h4 className="text-lg font-medium mb-4">Quick Links</h4>
-              <ul className="space-y-2">
+              <h4 className="text-base sm:text-lg font-medium mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm sm:text-base">
                 <li>
                   <Link to="/" className="text-green-100 hover:text-white">
                     Home
@@ -120,8 +125,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-medium mb-4">Contact</h4>
-              <ul className="space-y-2 text-green-100">
+              <h4 className="text-base sm:text-lg font-medium mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm sm:text-base text-green-100">
                 <li>123 Parkway Avenue</li>
                 <li>City, State 12345</li>
                 <li>Phone: (555) 123-4567</li>
@@ -129,30 +134,33 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-medium mb-4">Follow Us</h4>
+              <h4 className="text-base sm:text-lg font-medium mb-4">Follow Us</h4>
               <div className="flex space-x-4">
                 <a
                   href="#"
                   className="text-green-100 hover:text-white transition-colors"
+                  aria-label="Instagram"
                 >
-                  <Instagram className="w-6 h-6" />
+                  <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
                 </a>
                 <a
                   href="#"
                   className="text-green-100 hover:text-white transition-colors"
+                  aria-label="Facebook"
                 >
-                  <Facebook className="w-6 h-6" />
+                  <Facebook className="w-5 h-5 sm:w-6 sm:h-6" />
                 </a>
                 <a
                   href="#"
                   className="text-green-100 hover:text-white transition-colors"
+                  aria-label="Twitter"
                 >
-                  <Twitter className="w-6 h-6" />
+                  <Twitter className="w-5 h-5 sm:w-6 sm:h-6" />
                 </a>
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-green-800 text-center text-green-100">
+          <div className="mt-8 pt-8 border-t border-green-800 text-center text-sm sm:text-base text-green-100">
             <p>&copy; 2024 Parkway Hotel. All rights reserved.</p>
           </div>
         </div>
