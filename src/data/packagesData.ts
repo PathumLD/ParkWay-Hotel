@@ -5,7 +5,7 @@ export const packages: Package[] = [
     id: 'luxury-suite',
     title: 'Luxury Suite Package',
     description: 'Experience ultimate luxury with our premium suite package including spa access and fine dining.',
-    price: 'From $499/night',
+    price: 'From Rs. 10,000/night',
     features: [
       'Luxury Suite Accommodation',
       'Complimentary Breakfast',
@@ -18,8 +18,8 @@ export const packages: Package[] = [
   {
     id: 'wedding',
     title: 'Wedding Package',
-    description: 'Make your special day unforgettable with our comprehensive wedding package.',
-    price: 'From $5,999',
+    description: 'Make your special day memorable and unforgettable with our comprehensive wedding package.',
+    price: 'Can be customized',
     features: [
       'Grand Ballroom Venue',
       'Custom Catering',
@@ -32,8 +32,8 @@ export const packages: Package[] = [
   {
     id: 'business',
     title: 'Corporate Event Package',
-    description: 'Perfect for conferences, meetings, and corporate retreats.',
-    price: 'From $2,999/day',
+    description: 'Perfect venue for conferences, seminars, meetings, and your corporate and staff retreats.',
+    price: 'From Rs. 20000/day',
     features: [
       'Conference Hall',
       'AV Equipment',
@@ -47,7 +47,7 @@ export const packages: Package[] = [
     id: 'dining',
     title: 'Fine Dining Experience',
     description: 'Indulge in an exquisite culinary journey at our renowned restaurant.',
-    price: 'From $149/person',
+    price: 'From Rs.3500/person',
     features: [
       '5-Course Gourmet Meal',
       'Wine Pairing',
@@ -61,7 +61,7 @@ export const packages: Package[] = [
     id: 'spa',
     title: 'Spa & Wellness Package',
     description: 'Rejuvenate your body and mind with our luxury spa treatments.',
-    price: 'From $299',
+    price: 'From Rs.2000/person',
     features: [
       'Full Body Massage',
       'Facial Treatment',
@@ -75,7 +75,7 @@ export const packages: Package[] = [
     id: 'celebration',
     title: 'Celebration Package',
     description: 'Perfect for birthdays, anniversaries, and special occasions.',
-    price: 'From $799',
+    price: 'From Rs.15000',
     features: [
       'Private Venue',
       'Custom Cake',
